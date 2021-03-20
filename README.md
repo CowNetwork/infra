@@ -3,30 +3,15 @@ Infrastructure
 
 This repo contains infrastructure as code for cow network.
 
-
 Requirements
 ------------
 
-* Have Terraform installed
+* Have Terraform (>= 0.14.8) installed
 * Have Pipenv installed
 
 Usage
 -----
 
-Run the following command to sync the packages from `Pipfile.lock`
+Run `./setup.sh` to set up your local repo. 
 
-```
-$ pipenv sync
-```
-
-after that create a shell session for the virtual environment
-
-```
-$ pipenv shell
-```
-
-install all needed ansible roles and collections 
-
-```
-$ ansible-galaxy install -r requirements.yaml
-```
+**Note:** Always make sure you are in your virtual environment, if not execute `pipenv shell` otherwise all python modules will be missing.
