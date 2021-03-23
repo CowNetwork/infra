@@ -45,3 +45,14 @@ resource "hcloud_server" "mars-workers" {
     hcloud_network_subnet.mars-network
   ]
 }
+
+
+resource "hcloud_server" "wtf" {
+  name = "roffle"
+  image = "debian-10"
+  server_type = "cpx11"
+  location = "fsn1"
+  labels = {
+    type = "worker"
+  }
+}
