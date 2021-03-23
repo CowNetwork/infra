@@ -30,7 +30,7 @@ resource "hcloud_server" "mars-masters" {
 
 resource "hcloud_server" "mars-workers" {
   count = 4
-  name = "worker${count.index}"
+  name = "worker${count.index}.mars.cow.network"
   image = "debian-10"
   server_type = "cpx11"
   location = "fsn1"
@@ -44,15 +44,4 @@ resource "hcloud_server" "mars-workers" {
   depends_on = [
     hcloud_network_subnet.mars-network
   ]
-}
-
-
-resource "hcloud_server" "wtf" {
-  name = "roffle"
-  image = "debian-10"
-  server_type = "cpx11"
-  location = "fsn1"
-  labels = {
-    type = "worker"
-  }
 }
