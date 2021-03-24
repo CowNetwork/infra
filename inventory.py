@@ -10,11 +10,15 @@ parser.add_argument('--list', action='store_true')
 parser.add_argument('--host', type=str)
 args = parser.parse_args()
 
-#bla = subprocess.run(['terraform', '-chdir=tf', 'state', 'pull'], capture_output=True, text=True)
+out = subprocess.run(['terraform', '-chdir=tf', 'state', 'pull'], capture_output=True, text=True)
 
-state = {}
-with open('statefile') as json_file:
-  state = json.load(json_file)
+state = json.loads(out.stdout)
+#print(state)
+#exit(1)
+
+#state = {}
+#with open('statefile') as json_file:
+#  state = json.load(json_file)
 
 server_resources = [x for x in state['resources'] if x['type'] == 'hcloud_server']
 
@@ -41,15 +45,14 @@ for instance in instances:
     'ansible_host': attrs['ipv4_address']
   }
   
-  groups = attrs['labels']['type'].split(',')
+  groups = attrs['labels']['roles'].split('-')
   for group in groups:
     inventory['all']['hosts'].append(name)
     
     if group not in inventory:
         inventory[group] = {'hosts':[]}
-    group_entry = inventory[group]
-
-    group_entry['hosts'].append(name)
+    
+    inventory[group]['hosts'].append(name)
 
 
 if args.list:

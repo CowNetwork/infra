@@ -1,0 +1,11 @@
+---
+- hosts: "{{ servers | mandatory }}"
+  tasks:
+    - name: add ssh keys
+      ansible.posix.authorized_key:
+        user: root
+        key: '{{ item }}'
+        state: present
+      loop:
+        - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgkt6noQio02sum7YegOTQXt1yekvajmNf3xhFchSSt yannic'
+        - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAnmTlBssm9suGqltWHGfur0QFuN3vV5LYGjKcQ3j9vL benedikt'

@@ -2,8 +2,14 @@
 roles:
 # Roles from git
   - src: https://github.com/Freggy/kubernetes-ansible.git
-    version: 1.0.0
+    version: 1.0.1
     name: freggy.kubernetes
   # Roles from galaxy
   - name: geerlingguy.containerd
     version: 1.1.1
+
+collections:
+  - name: ansible.posix
+    version: 1.2.0
+  - name: community.general
+    version: 2.3.0

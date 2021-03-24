@@ -1,0 +1,5 @@
+containerd_service_state: started
+containerd_service_enabled: true
+containerd_package: containerd.io
+kube_version: 1.20.0-00
+kube_cluster_name: mars

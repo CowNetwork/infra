@@ -16,8 +16,9 @@ resource "hcloud_server" "mars-masters" {
   image = "debian-10"
   server_type = "cpx11"
   location = "fsn1"
+  ssh_keys = ["management-key"]
   labels = {
-    type = "master"
+    roles = "kube_master-mars"
   }
   network {
     network_id = hcloud_network.cluster-network.id
@@ -30,12 +31,13 @@ resource "hcloud_server" "mars-masters" {
 
 resource "hcloud_server" "mars-workers" {
   count = 4
-  name = "worker${count.index}.mars.cow.network"
+  name = "worker${count.index + 1}.mars.cow.network"
   image = "debian-10"
   server_type = "cpx11"
+  ssh_keys = ["management-key"]
   location = "fsn1"
   labels = {
-    type = "worker"
+    roles = "kube_worker-mars"
   }
   network {
     network_id = hcloud_network.cluster-network.id
