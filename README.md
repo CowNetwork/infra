@@ -26,3 +26,6 @@ $ ansible-playbook --private-key <management-key> add_ssh_keys_playbook.yaml -e 
 ```
 
 The management key has to be set on all hcloud servers.
+
+# TODO:
+* sub groups in `inventory.py`
