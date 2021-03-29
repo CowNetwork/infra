@@ -25,3 +25,4 @@
   roles:
     - role: geerlingguy.containerd
     - role: freggy.kubernetes
+    - role: cow.kubernetes-hcloud-bootstrap
