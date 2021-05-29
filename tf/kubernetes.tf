@@ -11,10 +11,10 @@ resource "hcloud_server" "mars-masters" {
 }
 
 resource "hcloud_server" "mars-workers" {
-  count = 4
+  count = 5
   name = "worker${count.index + 1}-mars-cow-network"
   image = "debian-10"
-  server_type = "cpx11"
+  server_type = "cx21"
   ssh_keys = ["management-key"]
   location = "fsn1"
   labels = {
